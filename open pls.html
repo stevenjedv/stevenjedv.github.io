@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #800000;
+            color: #800000;
+            padding: 50px;
+        }
+        .card {
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: scale(0.8);
+            animation: popIn 1s ease-out 0.5s forwards;
+        }
+        @keyframes popIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .heart {
+            font-size: 50px;
+            color: #ff1493;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        p {
+            font-size: 18px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .yes-btn {
+            background-color: #ff0000;
+            color: white;
+        }
+        .no-btn {
+            background-color: #ccc;
+            color: black;
+        }
+        /* Hide all sections initially except the main one */
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Card Section -->
+    <div id="main" class="card section active">
+        <div class="heart">❤️</div>
+        <h1>Hiii Crushiecakes ko</h1>
+        <p>Will you be my Valentine?</p>
+        <button class="yes-btn" onclick="showSection('yes')">Yes</button>
+        <button class="no-btn" onclick="showSection('no1')">No</button>
+        <p>answer mo pls</p>
+    </div>
+
+    <!-- Yes Section -->
+    <div id="yes" class="card section">
+            <h1>YOWNNNNN LEZZGOOO ❤️</h1>
+            <p>mag ready na ang buong sambayanan</p>
+            <img src="nailong.jpg" width="400">
+        <button onclick="showSection('main')">Back to Start</button>
+    </div>
+
+    <!-- No1 Section (3x Yes) -->
+    <div id="no1" class="card section">
+        <div class="heart">❤️</div>
+         <h1>Hiii Crushiecakes ko</h1>
+        <h2>sure ka na ba jan???</h2>
+        <button class="yes-btn" onclick="showSection('yes')" style="font-size: 54px; padding: 30px 60px;">Yes</button>
+        <button class="no-btn" onclick="showSection('no2')">No</button>
+       
+    </div>
+
+    <!-- No2 Section (5x Yes, tiny No) -->
+    <div id="no2" class="card section">
+        <div class="heart">❤️</div>
+         <h1>Hiii Crushiecakes ko</h1>
+        <h2>uhmmmm di pa rin??</h2>
+        <button class="yes-btn" onclick="showSection('yes')" style="font-size: 90px; padding: 50px 100px;">Yes</button>
+        <button class="no-btn" onclick="showSection('no3')" style="font-size: 9px; padding: 5px 10px;">No</button>
+        
+    </div>
+
+     <div id="no3" class="card section">
+        <div class="heart">❤️</div>
+         <h1>Hiii Crushiecakes ko</h1>
+        <h2>baka magbago pa isip mo sa pipindutin mo</h2>
+        <button class="yes-btn" onclick="showSection('yes')" style="font-size: 90px; padding: 50px 100px;">Yes</button>
+        
+        
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+            // Re-trigger pop animation for the new section
+            const card = document.querySelector('#' + sectionId + '.card');
+            if (card) {
+                card.style.animation = 'none';
+                setTimeout(() => {
+                    card.style.animation = 'popIn 1s ease-out 0.5s forwards';
+                }, 10);
+            }
+        }
+    </script>
+</body>
+</html>
